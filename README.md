@@ -1,17 +1,35 @@
-# EEE3097S-Project
+# README
 
+## About This Project
+This is the API design project mandated by the EEE3097S course at UCT, created by William Bourn and Declan Molloy, to demonstrate the use of IoT technology in a particular field
+of work. For this project, it was decided that security and remote access would be the focus and, thus, this API was designed for use with the EOZ IP40 keypad and RS Pro 105N
+Lock.
 
+## Licence
+See LICENCE for details.
 
-Quick Setup instructions:
+## Contributing
+See CONTRIBUTING for details.
 
-Viewing the keypad from the back, pins are 0-6 from left to right.
+## Getting Started
 
-Keypad pins 0,1,2 connect to RPi pins 15,13,11 respectfully. The anode of a diode is connected to each of these pins, the cathode connects to pin 19.
-Keypad pins 3,4,5,6 connect to RPi pins 24,22,18,16.
+### Prerequisite
+This API uses the RPi.GPIO library, which must comes as standard on a Raspberry Pi device. It also uses the timeit library, which must also be installed.
 
-RPI pin 37 is for the positive end of the magnetic lock and RPI pin 39 for the GND end. 
+### Installation
+To install the library, create a local directory and initialize a git repository.
+```sh
+git init
+```
+Perform a pull request from the directory url.
+```sh
+git pull https://github.com/WilliamBourn/EEE3097S-API-Design-Project.git
+```
 
-If it is all set up correctly, then when you run EOZ_IP40.py, it will display the pins you should be using, then the set of chars attached to each button. By pressing buttons
-on the keypad, the command line should print the assigned character. Press ctrl+C to exit this test function.
+## Usage
+See docs for setup instructions for each of the hardware modules and how they may be used.
 
-When running Lock_Pad.py, an input request will shop up asking you to type "Y" or "N". Typing "Y" will activate the magnet and "N" will deactivate it.
+## Contact
+
+If there are concerns or questions about this API, please contact the owner of the repository at:
+willjbourn@gmail.com
