@@ -1,4 +1,23 @@
 #-----------------------------------------------
+#Description
+#-----------------------------------------------
+
+#A python module designed to support the opperation of an RS Pro 150N Magnetic Lock hardware module.
+#
+#The module requires two GPIO pins, one of which is Ground. The non-ground pin is defined by the lock_pin argument of the class constructor, an integer. How the hardware module
+# is set up is entirely up to the user, however, it is recommended that an external power supply is used and that the microcontroller operates the hardware module through a
+# transistor to prevent exposing the microcontroller to excessive electrical current. When an object of type Maglock is created, it will instantly initialize the relevant GPIO 
+# pin. The GPIO pin must be manually cleaned up using the cleanup_gpio method in the event that the object is discarded or a program using this library and its functions 
+# terminates.
+#
+#While the lock is active, it exerts a strong magnetic force on the circuar face opposite the side with screw mounts, which will cease if the lock is deactivated. In order for
+# this to function correctly, it is important to define the lock_state argument in the constructor correctly.It must be defined as HIGH_LOCK_STATE if the lock should activate
+# when the pin is driven high, or LOW_LOCK_STATE if the lock should activate when the pin is driven low.
+#
+#The initial state of the lock can be set by the lock_open argument in the constructor.
+
+
+#-----------------------------------------------
 #Libraries
 #-----------------------------------------------
 
