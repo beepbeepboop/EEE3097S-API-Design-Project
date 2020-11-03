@@ -1,4 +1,26 @@
 #-----------------------------------------------
+#Description
+#-----------------------------------------------
+
+#A python module designed to support the opperation of an EOZ IP40 12-key Keypad hardware module.
+#
+#The module requires 8 GPIO pins to function. The pins used are defined in the column_pinset and row_pinset arguments of the class constructor, each a 4 length integer array.
+#The reverse side of the hardware module has 7 pins labeled D-K. F, E and D must be connected directly to the pins defined in the 0, 1 and 2 index of the column_pinset argument,
+# respectfully. The final index of column_pinset defines a GPIO pin that must be set up, connected via a diode, to each of the pins F, D and E, with the anode at these pins.
+#K, J, H and G must be connected to the pins defined in the 0, 1, 2 and 3 index of the row_pinset argument, respectfully. When an object of type Keypad is created, it will
+# instantly initialize all the relevant GPIO pins. The GPIO pins must be manually cleaned up using the cleanup_gpio method in the event that the object is discarded or a
+# program using this library and its functions terminates.
+#
+#While the keypad is active, pressing a button will assign the character associated with that button (by default, the numeric or symbolic character on the button face) into a
+# FIFO buffer called key_buffer. Characters can be pulled from the buffer using the fetch_next or fetch_all methods at any time. If the keypad is disabled, pressing the buttons
+# will not do anything.
+#
+#By enabling long presses through the long_press_en function or when constructing the object, holding down a button on the keypad for a period of time defined by the 
+# long_press_delay argument of the constructor, the button will assign a different character associated with that button through the long_press_keyset (by default, the capital
+# letters A through L), allowing for greater variation in what potential codes can be set when using the keypad as an access point.
+
+
+#-----------------------------------------------
 #Libraries
 #-----------------------------------------------
 
@@ -54,7 +76,8 @@ class Keypad:
     long_press_delay = []	#Time in milliseconds a button must be held to register as a long press
 
     #Pinsets
-    column_pinset = []		#The GPIO pins associated with the columns. The first entry is the leftmost column and progression goes from left to right, last entry is a callback pin
+    column_pinset = []		#The GPIO pins associated with the columns. The first entry is the leftmost column and progression goes from left to right, last entry is 
+                            # a callback pin
     row_pinset = []		#The GPIO pins associated with the rows. The first entry is the topmost row and progression goes from top to bottom
 
 
@@ -276,13 +299,15 @@ class Keypad:
 #Class Initialization Functions
 #-----------------------------------------------
     
-    def __init__(self, column_pinset=DEFAULT_COLUMN_PINSET, row_pinset=DEFAULT_ROW_PINSET, short_press_keyset=DEFAULT_SHORT_PRESS_KEYSET, long_press_keyset=DEFAULT_LONG_PRESS_KEYSET, long_press_delay=DEFAULT_LONG_PRESS_DELAY, long_press_en=False, key_buffer_en=False, keypad_active=True):
+    def __init__(self, column_pinset=DEFAULT_COLUMN_PINSET, row_pinset=DEFAULT_ROW_PINSET, short_press_keyset=DEFAULT_SHORT_PRESS_KEYSET, 
+                 long_press_keyset=DEFAULT_LONG_PRESS_KEYSET, long_press_delay=DEFAULT_LONG_PRESS_DELAY, long_press_en=False, key_buffer_en=False, keypad_active=True):
         """Constructor. Creates an object instance of this class
         Parameters:
             column_pinset (int[]): The set of GPIO pins (Board numbering) that are assigned to the column operations of the Keypad hardware module
             row_pinset (int[]): The set of GPIO pins (Board numbering) that are assigned to the row operations of the Keypad hardware module
             short_press_keyset (char[]): The set of characters that are associated with each button on the Keypad hardware module for standard operation
-            long_press_keyset (char[]): The set of characters that are associated with each button on the Keypad hardware module while long presses are enabled and the relevant button is held for a period
+            long_press_keyset (char[]): The set of characters that are associated with each button on the Keypad hardware module while long presses are enabled and the 
+                                        relevant button is held for a period
             long_press_delay (int): The time in milliseconds a button must be held while long presses are enabled to qualify as a long press
             long_press_en (boolean): True to enable long presses, or False to prevent them
             key_buffer_en (boolean): True to enable the key buffer to hold more than one character, or False to ensure it may only hold one
