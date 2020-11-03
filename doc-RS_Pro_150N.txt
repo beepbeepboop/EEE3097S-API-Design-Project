@@ -3,13 +3,21 @@ Help on module RS_Pro_150N:
 NAME
     RS_Pro_150N
 
-FILE
-    /home/pi/EEE3097S/EEE3097S-API-Design-Project/RS_Pro_150N.py
-
 DESCRIPTION
-    #-----------------------------------------------
-    #Libraries
-    #-----------------------------------------------
+    A python module designed to support the opperation of an RS Pro 150N Magnetic Lock hardware module.
+
+    The module requires two GPIO pins, one of which is Ground. The non-ground pin is defined by the lock_pin argument of the class constructor, an integer. How the hardware
+    module is set up is entirely up to the user, however, it is recommended that an external power supply is used and that the microcontroller operates the hardware module
+    through a transistor to prevent exposing the microcontroller to excessive electrical current. When an object of type Maglock is created, it will instantly initialize the
+    relevant GPIO pin. The GPIO pin must be manually cleaned up using the cleanup_gpio method in the event that the object is discarded or a program using this library and its 
+    functions  terminates.
+
+    While the lock is active, it exerts a strong magnetic force on the circuar face opposite the side with screw mounts, which will cease if the lock is deactivated. In order
+    for this to function correctly, it is important to define the lock_state argument in the constructor correctly.It must be defined as HIGH_LOCK_STATE if the lock should
+    activate when the pin is driven high, or LOW_LOCK_STATE if the lock should activate when the pin is driven low.
+
+    The initial state of the lock can be set by the lock_open argument in the constructor.
+
 
 CLASSES
     Maglock
@@ -37,13 +45,7 @@ CLASSES
      |      Initialize all the GPIO pins that the lock uses
      |  
      |  ----------------------------------------------------------------------
-     |  Data and other attributes defined here:
-     |  
-     |  lock_open = None
-     |  
-     |  lock_pin = None
-     |  
-     |  lock_state = None
+
 
 DATA
     DEFAULT_LOCK_PIN = 37
