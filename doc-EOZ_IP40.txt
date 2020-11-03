@@ -3,9 +3,6 @@ Help on module EOZ_IP40:
 NAME
     EOZ_IP40
 
-FILE
-    /home/pi/EEE3097S/EEE3097S-API-Design-Project/EOZ_IP40.py
-
 DESCRIPTION
     A python module designed to support the opperation of an EOZ IP40 12-key Keypad hardware module.
 
