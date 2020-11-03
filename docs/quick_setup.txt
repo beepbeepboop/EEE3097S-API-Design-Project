@@ -1,0 +1,35 @@
+Quick Setup
+
+This is a guide for setting up the hardware and software with as little work as possible.
+
+#--------------------------
+EOZ IP40 Keypad
+#--------------------------
+
+Viewing the keypad from the back, the pins D-K, from left to right. Pins D, E, F are connected directly to pins 15, 13, 11 of the Raspberry Pi. Pins D, E, F are also connected
+via diode to pin 19 of the Raspberry Pi (The cathode of each diode is at pin 19, while the anode is at pins D, E, F). Pins G, H, J, K are directly connected to pins 24, 22,
+18, 16 of the Raspberry Pi.
+
+In the code, import the relevant file with:
+from path import EOZ_IP40 as Keypad
+
+Create an object of class Keypad with no arguments:
+my_object = Keypad.Keypad()
+
+If setup was done correctly. Pressing buttons will load characters into the Keypad's buffer and these characters will be returned when my_object.fetch_next() is invoked.
+
+#--------------------------
+RS Pro 150N Lock
+#--------------------------
+
+The lock has a red and black terminal, henceforth refered to as positive and negative respectifully. Positive should be connected to an independant power supply no greated
+than 24V and the negative terminal should be connected to the collector of a high-power NPN transistor. The emitter of the transistor should be connected to the Ground pin (39)
+of the Raspberry Pi, along with the negative terminal of the external power supply. The base pin of the transistor should be connected to pin 37 of the raspberry Pi.
+
+In the code, import the relevant file with:
+from path import RS_Pro_150N as Maglock
+
+Create an object of class Maglock with no arguments:
+my_object = Maglock.Maglock()
+
+If setup was done correctly, the lock should activate and deactivate when my_object.activate_lock() or my_object.deactivate_lock() are called respectfully.
