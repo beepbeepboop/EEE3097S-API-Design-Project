@@ -1,0 +1,110 @@
+Help on module EOZ_IP40:
+
+NAME
+    EOZ_IP40
+
+FILE
+    /home/pi/EEE3097S/EEE3097S-API-Design-Project/EOZ_IP40.py
+
+DESCRIPTION
+    #-----------------------------------------------
+    #Libraries
+    #-----------------------------------------------
+
+CLASSES
+    Keypad
+    
+    class Keypad
+     |  Methods defined here:
+     |  
+     |  __init__(self, column_pinset=[11, 13, 15, 19], row_pinset=[16, 18, 22, 24], short_press_keyset=['1', '2', '3', '4', '5', '6', '7', '8', '9', '*', '0', '#'], long_press_keyset=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'], long_press_delay=500, long_press_en=False, key_buffer_en=False, keypad_active=True)
+     |      Constructor. Creates an object instance of this class
+     |      Parameters:
+     |          column_pinset (int[]): The set of GPIO pins (Board numbering) that are assigned to the column operations of the Keypad hardware module
+     |          row_pinset (int[]): The set of GPIO pins (Board numbering) that are assigned to the row operations of the Keypad hardware module
+     |          short_press_keyset (char[]): The set of characters that are associated with each button on the Keypad hardware module for standard operation
+     |          long_press_keyset (char[]): The set of characters that are associated with each button on the Keypad hardware module while long presses are enabled and the relevant button is held for a period
+     |          long_press_delay (int): The time in milliseconds a button must be held while long presses are enabled to qualify as a long press
+     |          long_press_en (boolean): True to enable long presses, or False to prevent them
+     |          key_buffer_en (boolean): True to enable the key buffer to hold more than one character, or False to ensure it may only hold one
+     |          keypad_active (boolean): True to initialize the object with all the relevant GPIO pins active, or False to initialize without any GPIO pins active
+     |      Returns:
+     |          (Keypad): An object of type Keypad
+     |  
+     |  activate_keypad(self)
+     |      Activates the callback funtion and sets the row pins to high
+     |  
+     |  add_to_buffer(self, char)
+     |      Push a new character into the buffer
+     |      Parameters:
+     |          char (char): Character to be inserted into the FIFO key buffer. If the key_buffer_en is set to False, this character will overide the currently stored character
+     |  
+     |  cleanup_gpio(self)
+     |      Clears all the GPIO pins that the keypad uses and unassigns callbacks will require a call of initialize_gpio for keypad to work again
+     |  
+     |  deactivate_keypad(self)
+     |      Deactivate the callback function and set the row pins to low
+     |  
+     |  enable_key_buffer(self, bool)
+     |      Enable the key buffer to hold more than one character when the argument is True, otherwise ensures that only one character can be stored
+     |      Parameters:
+     |          bool (boolean): True to enable the key_buffer to store more than one character or False to ensure the key_buffer stores only one character
+     |  
+     |  enable_long_press_event(self, bool)
+     |      Enable a different keyset to be used when a button is held for longer when True, otherwise ensures that only the short press keyset is used
+     |      Parameters:
+     |          bool (boolean): True to enable the use of long presses or False to ensure only short presses
+     |  
+     |  fetch_all(self)
+     |      Return and remove all the characters currently in the buffer as an array, if there are no characters in the buffer, then return nothing
+     |      Returns:
+     |          (char[]): The entire set of characters stored in the buffer, or Nothing if the buffer was empty
+     |  
+     |  fetch_next(self)
+     |      Return and remove the first character from the buffer, if there is no character in the buffer, then return nothing
+     |      Returns:
+     |          (char): The first character in the key buffer, or Nothing if the buffer was empty
+     |  
+     |  initialize_gpio(self)
+     |      Initialize all the GPIO pins that the keypad uses and assign callbacks
+     |  
+     |  press_event(self, channel)
+     |      Interupt function that triggers when a button is pressed while the keypad is active, assigning the pressed buttons' character into the key buffer
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  column_pinset = []
+     |  
+     |  key_buffer = []
+     |  
+     |  key_buffer_en = None
+     |  
+     |  keypad_active = None
+     |  
+     |  long_press_delay = []
+     |  
+     |  long_press_en = None
+     |  
+     |  long_press_keyset = []
+     |  
+     |  row_pinset = []
+     |  
+     |  short_press_keyset = []
+
+FUNCTIONS
+    timer = time(...)
+        time() -> floating point number
+        
+        Return the current time in seconds since the Epoch.
+        Fractions of a second may be present if the system clock provides them.
+
+DATA
+    DEFAULT_BOUNCETIME = 300
+    DEFAULT_COLUMN_PINSET = [11, 13, 15, 19]
+    DEFAULT_LONG_PRESS_DELAY = 500
+    DEFAULT_LONG_PRESS_KEYSET = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', '...
+    DEFAULT_ROW_PINSET = [16, 18, 22, 24]
+    DEFAULT_SHORT_PRESS_KEYSET = ['1', '2', '3', '4', '5', '6', '7', '8', ...
+
+
