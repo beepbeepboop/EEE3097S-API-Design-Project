@@ -1,8 +1,8 @@
 # Contributing
 
 ## Contributers
-  William Bourn
-  , Declan Molloy
+  William Bourn @ github.com/WilliamBourn
+  , Declan Molloy @ github.com/beepbeepboop
 
 ## Pull Requests
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a 
