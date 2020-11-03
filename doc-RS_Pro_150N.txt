@@ -1,0 +1,54 @@
+Help on module RS_Pro_150N:
+
+NAME
+    RS_Pro_150N
+
+FILE
+    /home/pi/EEE3097S/EEE3097S-API-Design-Project/RS_Pro_150N.py
+
+DESCRIPTION
+    #-----------------------------------------------
+    #Libraries
+    #-----------------------------------------------
+
+CLASSES
+    Maglock
+    
+    class Maglock
+     |  Methods defined here:
+     |  
+     |  __init__(self, lock_pin=37, lock_state=1, lock_open=True)
+     |      Constructor. Creates an object instance of this class
+     |      Parameters:
+     |          lock_pin (int): The GPIO pin (Board numbering) that is assigned to the lock operation
+     |          lock_state (GPIO.HIGH or GPIO.LOW): The state which, when the lock_pin is set to that state, will result in the magnetic lock being active
+     |          lock_open (boolean): True to initialize the object with the lock disengaged, or False to initialize the object with the lock engaged
+     |  
+     |  activate_lock(self)
+     |      Set the lock pin to lock state
+     |  
+     |  cleanup_gpio(self)
+     |      Clears all the GPIO pins that the lock uses
+     |  
+     |  deactivate_lock(self)
+     |      Set the lock pin to non-lock state
+     |  
+     |  initialize_gpio(self)
+     |      Initialize all the GPIO pins that the lock uses
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data and other attributes defined here:
+     |  
+     |  lock_open = None
+     |  
+     |  lock_pin = None
+     |  
+     |  lock_state = None
+
+DATA
+    DEFAULT_LOCK_PIN = 37
+    GROUND = 39
+    HIGH_LOCK_STATE = 1
+    LOW_LOCK_STATE = 0
+
+
