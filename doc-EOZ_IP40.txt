@@ -7,9 +7,22 @@ FILE
     /home/pi/EEE3097S/EEE3097S-API-Design-Project/EOZ_IP40.py
 
 DESCRIPTION
-    #-----------------------------------------------
-    #Libraries
-    #-----------------------------------------------
+    A python module designed to support the opperation of an EOZ IP40 12-key Keypad hardware module.
+
+    The module requires 8 GPIO pins to function. The pins used are defined in the column_pinset and row_pinset arguments of the class constructor, each a 4 length integer array.
+    The reverse side of the hardware module has 7 pins labeled D-K. F, E and D must be connected directly to the pins defined in the 0, 1 and 2 index of the column_pinset
+    argument, respectfully. The final index of column_pinset defines a GPIO pin that must be set up, connected via a diode, to each of the pins F, D and E, with the anode at
+    these pins. K, J, H and G must be connected to the pins defined in the 0, 1, 2 and 3 index of the row_pinset argument, respectfully. When an object of type Keypad is
+    created, it will instantly initialize all the relevant GPIO pins. The GPIO pins must be manually cleaned up using the cleanup_gpio method in the event that the object is 
+    discarded or a program using this library and its functions terminates.
+    
+    While the keypad is active, pressing a button will assign the character associated with that button (by default, the numeric or symbolic character on the button face) into a
+    FIFO buffer called key_buffer. Characters can be pulled from the buffer using the fetch_next or fetch_all methods at any time. If the keypad is disabled, pressing the
+    buttons will not do anything.
+
+    By enabling long presses through the long_press_en function or when constructing the object, holding down a button on the keypad for a period of time defined by the 
+    long_press_delay argument of the constructor, the button will assign a different character associated with that button through the long_press_keyset (by default, the capital
+    letters A through L), allowing for greater variation in what potential codes can be set when using the keypad as an access point.
 
 CLASSES
     Keypad
@@ -72,25 +85,6 @@ CLASSES
      |      Interupt function that triggers when a button is pressed while the keypad is active, assigning the pressed buttons' character into the key buffer
      |  
      |  ----------------------------------------------------------------------
-     |  Data and other attributes defined here:
-     |  
-     |  column_pinset = []
-     |  
-     |  key_buffer = []
-     |  
-     |  key_buffer_en = None
-     |  
-     |  keypad_active = None
-     |  
-     |  long_press_delay = []
-     |  
-     |  long_press_en = None
-     |  
-     |  long_press_keyset = []
-     |  
-     |  row_pinset = []
-     |  
-     |  short_press_keyset = []
 
 FUNCTIONS
     timer = time(...)
