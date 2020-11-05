@@ -22,7 +22,7 @@ If setup was done correctly. Pressing buttons will load characters into the Keyp
 RS Pro 150N Lock
 #--------------------------
 
-The lock has a red and black terminal, henceforth referred to as positive and negative respectfully. Positive should be connected to an independant power supply no greated
+The lock has a red and black terminal, henceforth referred to as positive and negative respectfully. Positive should be connected to an independant power supply no greater
 than 24V and the negative terminal should be connected to the collector of a high-power NPN transistor. The emitter of the transistor should be connected to the Ground pin (39)
 of the Raspberry Pi, along with the negative terminal of the external power supply. The base pin of the transistor should be connected to pin 37 of the raspberry Pi.
 
